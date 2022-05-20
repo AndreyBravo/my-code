@@ -20,11 +20,10 @@ import NavBar from "./components/NavBar.vue";
 export default class App extends Vue {}
 </script>
 <style scoped>
-#app {
-  width: 100%;
-  margin: 0 auto !important;
+div {
+  height: 100%;
+  margin: 0;
   text-align: center;
+  background-color: rgb(0, 247, 54);
 }
-
-
 </style>

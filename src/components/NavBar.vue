@@ -13,15 +13,23 @@
   </nav>
 </template>
 <style scoped>
-div{
-    justify-content: center;
+div {
+  justify-content: center;
 }
+
+nav {
+  padding: 0;
+  padding-top: 20px;
+  background: linear-gradient( rgb(102, 102, 252), rgb(0, 247, 54));
+}
+
 ul {
   width: 90%;
   display: flex;
   justify-content: center;
+  font-weight: 500;
   border-radius: 50px;
-  border: 1px solid red;
+  border: 3px solid red;
 }
 
 li {
@@ -29,6 +37,13 @@ li {
 }
 
 a {
+  font-size: 24px;
+  color: rgb(240, 16, 202);
   text-decoration: none;
 }
+
+a:hover{
+  color: red;
+}
+
 </style>

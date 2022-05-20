@@ -1,10 +1,27 @@
 <template>
-    <div>
-        <h2>It is About page</h2>
-    </div>
+  <div>
+    <typewriter :type-interval="100" :replace-interval="100">
+      <h1>{{ text }}</h1>
+    </typewriter>
+  </div>
 </template>
+<script lang="ts">
+import { Component, Vue } from "vue-property-decorator";
+
+import Typewriter from "typewriter-vue";
+
+@Component({
+  components: {
+    Typewriter,
+  },
+})
+export default class About extends Vue {
+  text = "It is About page";
+}
+</script>
 <style scoped>
-div{
-    color: aqua;
+h1 {
+  margin-top: 20px;
+  font-size: 24px;
 }
 </style>
