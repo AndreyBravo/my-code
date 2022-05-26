@@ -1,49 +1,67 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <router-link to="/">Go to Home</router-link>
-        </li>
-        <li class="nav-item">
-          <router-link to="/about">Go to About</router-link>
-        </li>
-      </ul>
+  <nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <router-link class="nav-link" to="/">Go to Home</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link" to="/about">Go to About</router-link>
+          </li>
+          <div>
+            <div v-if="isLoggedIn">
+              <button
+                type="button"
+                class="btn btn-outline-primary"
+                @click="handleSingOut"
+              >
+                Sing out
+              </button>
+            </div>
+
+            <div v-else class="navbar-nav" >
+              <li class="nav-item">
+                <router-link class="nav-link" to="/login">Sing in</router-link>
+              </li>
+              <li class="nav-item">
+                <router-link class="nav-link" to="/register"
+                  >Sing up</router-link
+                >
+              </li>
+            </div>
+          </div>
+        </ul>
+      </div>
     </div>
   </nav>
 </template>
+<script lang="ts">
+import { Component, Vue } from "vue-property-decorator";
+
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+
+@Component
+export default class Navbar extends Vue {
+  isLoggedIn = false;
+
+  handleSingOut() {
+    signOut(getAuth()).then(() => {
+      this.$router.push({ name: "home" }).catch((err) => {});
+    });
+  }
+
+  mounted() {
+    onAuthStateChanged(getAuth(), (user) => {
+      if (user) {
+        this.isLoggedIn = true;
+      } else {
+        this.isLoggedIn = false;
+      }
+    });
+  }
+}
+</script>
 <style scoped>
-div {
-  justify-content: center;
-}
-
-nav {
-  padding: 0;
-  padding-top: 20px;
-  background: linear-gradient( rgb(102, 102, 252), rgb(0, 247, 54));
-}
-
-ul {
-  width: 90%;
-  display: flex;
-  justify-content: center;
-  font-weight: 500;
-  border-radius: 50px;
-  border: 3px solid red;
-}
-
-li {
-  padding: 15px;
-}
-
-a {
-  font-size: 24px;
-  color: rgb(240, 16, 202);
-  text-decoration: none;
-}
-
-a:hover{
-  color: red;
-}
 
 </style>

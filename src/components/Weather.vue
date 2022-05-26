@@ -67,7 +67,6 @@ export default class Weather extends Vue {
   async mounted(): Promise<void> {
     try {
       await this.$store.dispatch("GET_WEATHER", this.selectedCity);
-      // console.log(this.getFullWeather.weather);
     } catch (err) {
       console.log(err);
     }

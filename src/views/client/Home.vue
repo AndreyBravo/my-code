@@ -13,7 +13,7 @@ import { Component, Vue } from "vue-property-decorator";
 import Typewriter from "typewriter-vue";
 
 import Weather from "@/components/Weather.vue";
-import KursExchange from "@/components/KursExchange.vue";
+import KursExchange from '@/components/KursExchange.vue';
 
 
 @Component({

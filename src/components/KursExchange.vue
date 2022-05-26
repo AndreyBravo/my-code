@@ -4,7 +4,7 @@
     <ul class="list-group">
       <li class="list-group-item">
         100 RUB :
-        {{ getKursBYN }} BYN
+        {{ getKursBYN.toFixed(3) }} BYN
       </li>
       <li class="list-group-item">
         {{ USD.toFixed(3) }} USD : {{ BYNUSD.toFixed(3) }} BYN
